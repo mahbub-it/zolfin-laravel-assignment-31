@@ -68,5 +68,10 @@ Route::get('search-page', function () {
 
 // Registration and login route 
 
-Route::get('register', [LoginController::class, 'register']);
-Route::post('register', [LoginController::class, 'registerPost'])->name('registration');
+Route::get('register', [LoginController::class, 'register'])->name('register');
+Route::post('register', [LoginController::class, 'registerPost'])->name('registerProcess');
+
+Route::get('login', [LoginController::class, 'login'])->name('login');
+Route::post('login', [LoginController::class, 'loginPost'])->name('loginProcess');
+
+// Route::post('logout', [LoginController::class, 'logout'])->name('logout');

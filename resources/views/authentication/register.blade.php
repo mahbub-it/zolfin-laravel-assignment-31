@@ -36,6 +36,16 @@
                     <div class="row">
                         <div class="col">
 
+                            @if($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
                             @if(session()->has('message'))
                                 <div class="alert alert-success">
                                     {{ session('message') }}
@@ -44,22 +54,27 @@
 
                             <h4>Create an Account</h4>
                             <hr> <br>
-                            <form method="POST" action="{{ route('registration') }}">
+                            <form method="POST" action="{{ route('registerProcess') }}">
                                 @csrf
                                 <div class="mb-3">
-                                    <input type="text" name="name" class="form-control" placeholder="Full name">
+                                    <input value="{{ old('name') }}" type="text" name="name" class="form-control"
+                                        placeholder="Full name">
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" name="username" class="form-control" placeholder="User name">
+                                    <input value="{{ old('username') }}" type="text" name="username" class="form-control"
+                                        placeholder="User name">
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" name="photo" class="form-control" placeholder="Photo URL">
+                                    <input value="{{ old('photo') }}" type="text" name="photo" class="form-control"
+                                        placeholder="Photo URL">
                                 </div>
                                 <div class="mb-3">
-                                    <input type="email" name="email" class="form-control" placeholder="Email Address">
+                                    <input value="{{ old('email') }}" type="email" name="email" class="form-control"
+                                        placeholder="Email address">
                                 </div>
                                 <div class="mb-3">
-                                    <input type="password" name="password" class="form-control" placeholder="Password">
+                                    <input value="" type="password" name="password" class="form-control"
+                                        placeholder="Password">
                                 </div>
                                 <div class="mb-3">
                                     <input type="submit" class="btn btn-primary" value="Create Account">
