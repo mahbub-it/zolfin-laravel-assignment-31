@@ -82,7 +82,7 @@
                             </div>
                         </div>
                     @endforeach
-
+                    @include('components.pagination')
                     <div class="col-12">
 
 

@@ -7,5 +7,4 @@
     @include('components.blog.cat-post')
 
 
-
 @endsection

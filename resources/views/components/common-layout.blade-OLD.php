@@ -48,42 +48,149 @@
                                 <i class="las la-times"></i>
                             </span>
                         </div>
-
                         <ul class="t-list zol-menu">
-                            <li class="zol-menu__list zol-menu__current">
-                                <a href="{{ route('home') }}" class="t-link zol-menu__link">home</a>
+                            <li class="zol-menu__list zol-menu__current zol-menu__has-sub">
+                                <a href="#" class="t-link zol-menu__link">home</a>
+                                <ul class="t-list zol-menu__sub">
+                                    <li class="zol-menu__sub-list">
+                                        <a href="/" class="t-link zol-menu__sub-link">
+                                            home page
+                                        </a>
+                                    </li>
+                                    <li class="zol-menu__sub-list">
+                                        <a href="/home-2" class="t-link zol-menu__sub-link">
+                                            home page 2
+                                        </a>
+                                    </li>
+                                    <li class="zol-menu__sub-list">
+                                        <a href="/home-3" class="t-link zol-menu__sub-link">
+                                            home page 3
+                                        </a>
+                                    </li>
+                                    <li class="zol-menu__sub-list">
+                                        <a href="/home-4" class="t-link zol-menu__sub-link">
+                                            home page 4
+                                        </a>
+                                    </li>
+                                    <li class="zol-menu__sub-list">
+                                        <a href="/home-5" class="t-link zol-menu__sub-link">
+                                            home page 5
+                                        </a>
+                                    </li>
+                                    <li class="zol-menu__sub-list">
+                                        <a href="/home-6" class="t-link zol-menu__sub-link">
+                                            home page 6
+                                        </a>
+                                    </li>
+                                    <li class="zol-menu__sub-list">
+                                        <a href="/home-7" class="t-link zol-menu__sub-link">
+                                            home page 7
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="zol-menu__list zol-menu__has-sub">
+                                <a href="#" class="t-link zol-menu__link">portfolio</a>
+                                <ul class="t-list zol-menu__sub">
+                                    <li class="zol-menu__sub-list">
+                                        <a href="/portfolio" class="t-link zol-menu__sub-link">
+                                            portfolio
+                                        </a>
+                                    </li>
+                                    <li class="zol-menu__sub-list">
+                                        <a href="/portfolio-details" class="t-link zol-menu__sub-link">
+                                            portfolio details
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
 
+                            <li class="zol-menu__list zol-menu__has-sub">
+                                <a href="#" class="t-link zol-menu__link">service</a>
+                                <ul class="t-list zol-menu__sub">
+                                    <li class="zol-menu__sub-list">
+                                        <a href="/service-details" class="t-link zol-menu__sub-link">
+                                            service details
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="zol-menu__list zol-menu__has-sub">
+                                <a href="#" class="t-link zol-menu__link">page</a>
+                                <ul class="t-list zol-menu__sub">
+                                    <li class="zol-menu__sub-list zol-menu__has-sub-2">
+                                        <a href="#" class="t-link zol-menu__sub-link">
+                                            about
+                                        </a>
+                                        <ul class="t-list zol-menu__sub-2">
+                                            <li class="zol-menu__sub-2-list-2">
+                                                <a href="/about" class="t-link zol-menu__sub-2-link-2">
+                                                    about us
+                                                </a>
+                                            </li>
+                                            <li class="zol-menu__sub-2-list-2">
+                                                <a href="/about-2" class="t-link zol-menu__sub-2-link-2">
+                                                    about company
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="zol-menu__sub-list">
+                                        <a href="/blog-details" class="t-link zol-menu__sub-link">
+                                            blog details
+                                        </a>
+                                    </li>
+                                    <li class="zol-menu__sub-list">
+                                        <a href="/price" class="t-link zol-menu__sub-link">
+                                            price table
+                                        </a>
+                                    </li>
+                                    <li class="zol-menu__sub-list">
+                                        <a href="/faq" class="t-link zol-menu__sub-link">
+                                            FAQ
+                                        </a>
+                                    </li>
+                                    <li class="zol-menu__sub-list">
+                                        <a href="/team" class="t-link zol-menu__sub-link">
+                                            team member
+                                        </a>
+                                    </li>
+                                    <li class="zol-menu__sub-list">
+                                        <a href="/process" class="t-link zol-menu__sub-link">
+                                            our process
+                                        </a>
+                                    </li>
+                                    <li class="zol-menu__sub-list">
+                                        <a href="/404" class="t-link zol-menu__sub-link">
+                                            404
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="zol-menu__list zol-menu__has-sub">
+                                <a href="#" class="t-link zol-menu__link">blog</a>
+                                <ul class="t-list zol-menu__sub">
+                                    <li class="zol-menu__sub-list">
+                                        <a href="/blog" class="t-link zol-menu__sub-link">
+                                            blog
+                                        </a>
+                                    </li>
+                                    <li class="zol-menu__sub-list">
+                                        <a href="/blog-2" class="t-link zol-menu__sub-link">
+                                            blog with sidebar
+                                        </a>
+                                    </li>
+                                    <li class="zol-menu__sub-list">
+                                        <a href="/blog-2" class="t-link zol-menu__sub-link">
+                                            blog sidebar
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li class="zol-menu__list">
-                                <a href="{{ route('blog') }}" class="t-link zol-menu__link">blog</a>
+                                <a href="/contact" class="t-link zol-menu__link">contact us</a>
                             </li>
-
-                            @guest
-                                <li class="zol-menu__list">
-                                    <a href="{{ route('register') }}" class="t-link zol-menu__link">register</a>
-                                </li>
-
-                                <li class="zol-menu__list">
-                                    <a href="{{ route('login') }}" class="t-link zol-menu__link">login</a>
-                                </li>
-                            @endguest
-
-                            @auth
-                                <li class="zol-menu__list">
-                                    <a href="{{ route('dashboard') }}" class="t-link zol-menu__link">dashboard</a>
-                                </li>
-
-                                <li class="zol-menu__list">
-                                    <form method="post" action="{{ route('logout') }}">
-                                        @csrf
-                                        <button type="submit" class="btn mt-3">logout</button>
-                                    </form>
-                                </li>
-
-                            @endauth
-
                         </ul>
-
                     </div>
                 </div>
                 <div class="col-xl-2 d-none d-xl-block">

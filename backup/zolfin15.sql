@@ -1,9 +1,9 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1deb3
+-- version 5.2.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Dec 08, 2025 at 09:16 AM
+-- Host: localhost
+-- Generation Time: Dec 08, 2025 at 07:42 PM
 -- Server version: 8.0.44-0ubuntu0.24.04.1
 -- PHP Version: 8.4.15
 
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categories` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -54,11 +54,11 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALU
 
 CREATE TABLE `failed_jobs` (
   `id` bigint UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -70,7 +70,7 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `migrations` (
   `id` int UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -96,8 +96,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -109,11 +109,11 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `tokenable_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -127,16 +127,16 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `posts` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `excerpt` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` text COLLATE utf8mb4_unicode_ci,
-  `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `excerpt` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `thumbnail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` bigint UNSIGNED NOT NULL,
   `category_id` bigint UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `views` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `views` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -144,7 +144,7 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `excerpt`, `slug`, `content`, `thumbnail`, `user_id`, `category_id`, `created_at`, `updated_at`, `views`) VALUES
-(1, 'Mary Ann, what ARE.', 'Voluptatem magnam sunt aut exercitationem velit rerum. Voluptas saepe quae at rem voluptatem deserunt molestiae. Quia ea quisquam nam vero sed omnis veritatis. Quis quia corrupti sequi. Sapiente laudantium odio consequatur est. Ullam at est rerum et quas pariatur corrupti. Veniam doloremque numquam explicabo. Et ea fuga qui nisi. Et iusto voluptatum fugiat.', 'et-et-similique-mollitia-perspiciatis', 'Porro quos doloribus et.', 'https://via.placeholder.com/1000x600.png/000033?text=aut', 3, 5, '2025-12-07 19:28:08', NULL, '3200'),
+(1, 'Mary Ann, what ARE.', 'Voluptatem magnam sunt aut exercitationem velit rerum. Voluptas saepe quae at rem voluptatem deserunt molestiae. Quia ea quisquam nam vero sed omnis veritatis. Quis quia corrupti sequi. Sapiente laudantium odio consequatur est. Ullam at est rerum et quas pariatur corrupti. Veniam doloremque numquam explicabo. Et ea fuga qui nisi. Et iusto voluptatum fugiat.', 'et-et-similique-mollitia-perspiciatis', 'Porro quos doloribus et.', 'https://via.placeholder.com/1000x600.png/000033?text=aut', 3, 5, '2025-12-07 19:28:08', '2025-12-08 17:15:37', '3204'),
 (2, 'Caterpillar. \'Is.', 'Illum sed commodi possimus quis dolor. Velit architecto ut enim incidunt quia sed molestiae. Velit ad vel voluptas sint. Nam rem autem rem qui hic perferendis quisquam. Laborum et officiis qui aspernatur neque aut laudantium. Ducimus ea aut eum fugiat. Debitis minima iusto itaque. Iusto voluptatem aut ducimus harum. Velit ipsam eius aut praesentium sunt autem et. Ea animi earum quia deleniti. Ipsam ut et ipsa accusantium laborum. Laboriosam deleniti officiis id iste cumque. Sit sunt voluptatum ratione est sint.', 'fugit-reprehenderit-amet-nulla-dolor', 'Distinctio quia eum eaque.', 'https://via.placeholder.com/1000x600.png/000077?text=veritatis', 4, 4, '2025-12-07 19:28:08', NULL, '2033'),
 (3, 'I was sent for.\'.', 'Eligendi et dolorem distinctio nemo. Explicabo nobis similique eligendi suscipit. Unde reiciendis error voluptatem culpa. Molestiae velit quia ducimus sed aut similique odio. Ullam aut possimus incidunt non incidunt et odit odit. Eius natus cum earum delectus. Maiores eligendi nesciunt voluptatem ut explicabo ut ut voluptas.', 'amet-voluptas-dolores-soluta-aliquid-aut-consequatur', 'Ullam eum nesciunt omnis.', 'https://via.placeholder.com/1000x600.png/0099cc?text=deleniti', 5, 2, '2025-12-07 19:28:08', NULL, '199'),
 (4, 'Mock Turtle Soup.', 'Facilis eos molestias hic a nam. Totam est voluptas aut sint provident molestiae. Cumque animi sint quis. Vel aut rerum mollitia occaecati. Velit odit nisi ipsum et. Consequatur sit ut et porro consequuntur. Laudantium vitae rem cum inventore non voluptas ut. Nemo nemo ipsa sit a explicabo impedit amet. Eum saepe aliquid fuga magni.', 'voluptatem-quidem-et-aperiam-ipsa-numquam-quia', 'Dicta aut vel repellendus.', 'https://via.placeholder.com/1000x600.png/003344?text=qui', 3, 1, '2025-12-07 19:28:09', NULL, '2842'),
@@ -163,13 +163,13 @@ INSERT INTO `posts` (`id`, `title`, `excerpt`, `slug`, `content`, `thumbnail`, `
 
 CREATE TABLE `users` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -189,7 +189,9 @@ INSERT INTO `users` (`id`, `name`, `username`, `photo`, `email`, `email_verified
 (8, 'Jamie Barrows', 'stoltenberg.matt', 'https://via.placeholder.com/100x100.png/006611?text=aut', 'jewel64@example.com', NULL, '$2y$10$IHyXvMneeZX15QKejUFhCOMvordfw0NGT2w2TwXDODzql0W8Lr/QO', NULL, NULL, NULL),
 (9, 'Marquise Gerlach', 'armani65', 'https://via.placeholder.com/100x100.png/0044aa?text=culpa', 'doyle72@example.net', NULL, '$2y$10$JjKsaAyVr081D4mHDqwGNObFp5a1uWNU9xWYlpEzAUAp1VdIEYfvW', NULL, NULL, NULL),
 (10, 'Robb Ondricka', 'cfeest', 'https://via.placeholder.com/100x100.png/00dd88?text=aliquid', 'renner.dee@example.org', NULL, '$2y$10$DPC6wUiC78D4vb2iQQxcl./1MPtfMCooHQHL1y8Mri2sbBOAWanRy', NULL, NULL, NULL),
-(11, 'mahbub', 'mahbub', 'https://placehold.co/', 'bdsmrahman@gmail.com', NULL, '$2y$10$.lLFPo.A2JXDcxDM3cBCauebMbrm9mx5lKqzfn9CxDQhTK9f35OL2', NULL, '2025-12-08 08:40:47', '2025-12-08 08:40:47');
+(11, 'mahbub', 'mahbub', 'https://placehold.co/', 'bdsmrahman@gmail.com', NULL, '$2y$10$.lLFPo.A2JXDcxDM3cBCauebMbrm9mx5lKqzfn9CxDQhTK9f35OL2', NULL, '2025-12-08 08:40:47', '2025-12-08 08:40:47'),
+(12, 'abc', 'abc', 'abc', 'abc@abc.com', NULL, '$2y$10$DibNI4moNBMKI1R2omKnye4NDCTw/stMJNmgUKjs.HLmtZJ5xPk/W', NULL, '2025-12-08 12:35:56', '2025-12-08 12:35:56'),
+(13, 'do', 'do', 'sfsfsdf', 'do@gam.com', NULL, '$2y$10$Tl4d2l4UwfjOhoHKgxnem./JwqS/d9gn1eLpnM8/Y0/uxbXkzMiGS', NULL, '2025-12-08 17:32:11', '2025-12-08 17:32:11');
 
 --
 -- Indexes for dumped tables
@@ -279,7 +281,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -86,11 +86,7 @@
                         <h4 class="blog-post__title text-center text-danger">Sorry dear, no posts found</h4>
                     @endif
 
-                    <div class="col-12">
-
-
-
-                    </div>
+                    @include('components.pagination')
                 </div>
             </div>
         </div>

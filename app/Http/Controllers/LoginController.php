@@ -28,7 +28,10 @@ class LoginController extends Controller
 
         $user = User::create($info);
 
-        return redirect('/register')->with('message', 'User Created Successfully');
+        if ($user = User::create($info)) {
+            Auth::login($user);
+            return redirect('/dashboard')->with('message', 'User Created Successfully');
+        }
     }
 
     public function dashboard()

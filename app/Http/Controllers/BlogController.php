@@ -19,7 +19,7 @@ class BlogController extends Controller
                 ->where('title', 'like', '%' . $search . '%')
                 ->orWhere('excerpt', 'like', '%' . $search . '%')
                 ->orWhere('content', 'like', '%' . $search . '%')
-                ->get(),
+                ->paginate(3),
             'title' => 'Blog'
         ]);
 
@@ -55,7 +55,7 @@ class BlogController extends Controller
 
         return view('components.blog.category', [
             'title' => $category->name,
-            'posts' => $category->posts
+            'posts' => $category->posts()->paginate(2)
         ]);
     }
 
@@ -65,7 +65,7 @@ class BlogController extends Controller
         return view('components.blog.user-post', [
             'title' => $user->name,
             'user' => $user,
-            'posts' => $user->posts
+            'posts' => $user->posts()->paginate(2),
         ]);
     }
 
