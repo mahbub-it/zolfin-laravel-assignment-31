@@ -74,4 +74,5 @@ Route::post('register', [LoginController::class, 'registerPost'])->name('registe
 Route::get('login', [LoginController::class, 'login'])->name('login');
 Route::post('login', [LoginController::class, 'loginPost'])->name('loginProcess');
 
-// Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('dashboard', [LoginController::class, 'dashboard'])->name('dashboard');
+Route::get('logout', [LoginController::class, 'signout'])->name('logout');

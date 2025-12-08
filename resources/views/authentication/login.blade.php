@@ -46,9 +46,15 @@
                                 </div>
                             @endif
 
-                            @if(session()->has('message'))
-                                <div class="alert alert-success">
-                                    {{ session('message') }}
+                            @if(session()->has('invalid'))
+                                <div class="alert alert-danger">
+                                    {{ session('invalid') }}
+                                </div>
+                            @endif
+
+                            @if(session()->has('wrong'))
+                                <div class="alert alert-danger">
+                                    {{ session('wrong') }}
                                 </div>
                             @endif
 
