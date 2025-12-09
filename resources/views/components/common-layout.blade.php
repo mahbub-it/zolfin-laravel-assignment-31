@@ -50,30 +50,30 @@
                         </div>
 
                         <ul class="t-list zol-menu">
-                            <li class="zol-menu__list zol-menu__current">
+                            <li class="zol-menu__list {{ request()->routeIs('home') ? 'zol-menu__current' : '' }}">
                                 <a href="{{ route('home') }}" class="t-link zol-menu__link">home</a>
                             </li>
 
-                            <li class="zol-menu__list">
+                            <li class="zol-menu__list {{ request()->routeIs('blog') ? 'zol-menu__current' : '' }}">
                                 <a href="{{ route('blog') }}" class="t-link zol-menu__link">blog</a>
                             </li>
 
                             @guest
-                                <li class="zol-menu__list">
+                                <li class="zol-menu__list {{ request()->routeIs('register') ? 'zol-menu__current' : '' }}">
                                     <a href="{{ route('register') }}" class="t-link zol-menu__link">register</a>
                                 </li>
 
-                                <li class="zol-menu__list">
+                                <li class="zol-menu__list {{ request()->routeIs('login') ? 'zol-menu__current' : '' }}">
                                     <a href="{{ route('login') }}" class="t-link zol-menu__link">login</a>
                                 </li>
                             @endguest
 
                             @auth
-                                <li class="zol-menu__list">
+                                <li class="zol-menu__list {{ request()->routeIs('dashboard') ? 'zol-menu__current' : '' }}">
                                     <a href="{{ route('dashboard') }}" class="t-link zol-menu__link">dashboard</a>
                                 </li>
 
-                                <li class="zol-menu__list">
+                                <li class="zol-menu__list {{ request()->routeIs('logout') ? 'zol-menu__current' : '' }}">
                                     <form method="post" action="{{ route('logout') }}">
                                         @csrf
                                         <button type="submit" class="btn mt-3">logout</button>

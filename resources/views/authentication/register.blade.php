@@ -37,14 +37,14 @@
                         <div class="col">
 
                             <!-- @if($errors->any())
-                                                                            <div class="alert alert-danger">
-                                                                                <ul>
-                                                                                    @foreach ($errors->all() as $error)
-                                                                                        <li>{{ $error }}</li>
-                                                                                    @endforeach
-                                                                                </ul>
-                                                                            </div>
-                                                                        @endif -->
+                                                                                        <div class="alert alert-danger">
+                                                                                            <ul>
+                                                                                                @foreach ($errors->all() as $error)
+                                                                                                    <li>{{ $error }}</li>
+                                                                                                @endforeach
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    @endif -->
 
                             @if(session()->has('message'))
                                 <div class="alert alert-success">
@@ -75,15 +75,6 @@
                                     </div>
                                 @enderror
                                 <div class="mb-3">
-                                    <input value="{{ old('photo') }}" type="text" name="photo" class="form-control"
-                                        placeholder="Photo URL">
-                                </div>
-                                @error('photo')
-                                    <div class="mb-4 text-sm text-danger">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                                <div class="mb-3">
                                     <input value="{{ old('email') }}" type="email" name="email" class="form-control"
                                         placeholder="Email address">
                                 </div>
@@ -97,6 +88,15 @@
                                         placeholder="Password">
                                 </div>
                                 @error('password')
+                                    <div class="mb-4 text-sm text-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                <div class="mb-3">
+                                    <input value="{{ old('photo') }}" type="text" name="photo" class="form-control"
+                                        placeholder="Photo URL">
+                                </div>
+                                @error('photo')
                                     <div class="mb-4 text-sm text-danger">
                                         {{ $message }}
                                     </div>

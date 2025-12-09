@@ -1,10 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\User;
-
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -21,14 +19,14 @@ class LoginController extends Controller
         $info = $request->validate([
             'name' => 'required|unique:users|max:255',
             'username' => 'required|unique:users',
-            'photo' => 'required|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
+            'photo' => 'required|max:255',
         ]);
 
         $user = User::create($info);
 
-        if ($user = User::create($info)) {
+        if ($user) {
             Auth::login($user);
             return redirect('/dashboard')->with('message', 'User Created Successfully');
         }
