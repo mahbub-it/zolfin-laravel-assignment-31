@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
 
 class PostController extends Controller
 {
@@ -76,19 +77,17 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('admin.edit-post');
+        $category = Category::all();
+        return view('admin.edit-post', [
+            'post' => $post,
+            'categories' => $category,
+            'cat' => $post->category
+        ]);
     }
-
-    /**
-     * Update the specified resource in storage.
-     * For updating data
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $post->update(request()->all());
+        return back()->with('success', 'Post has been updated...');
     }
 
     /**

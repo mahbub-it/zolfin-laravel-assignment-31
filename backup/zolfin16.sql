@@ -1,10 +1,10 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1deb3
+-- version 5.2.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Dec 14, 2025 at 10:22 AM
--- Server version: 8.0.44-0ubuntu0.24.04.1
+-- Host: localhost
+-- Generation Time: Dec 14, 2025 at 10:16 PM
+-- Server version: 8.0.44-0ubuntu0.24.04.2
 -- PHP Version: 8.4.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -29,8 +29,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categories` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -54,11 +54,11 @@ INSERT INTO `categories` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALU
 
 CREATE TABLE `failed_jobs` (
   `id` bigint UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -70,7 +70,7 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `migrations` (
   `id` int UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -96,8 +96,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -109,11 +109,11 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `tokenable_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -127,16 +127,16 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `posts` (
   `id` bigint UNSIGNED NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `excerpt` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `slug` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `content` text COLLATE utf8mb4_unicode_ci,
-  `thumbnail` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `title` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `excerpt` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `slug` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `content` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
+  `thumbnail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_id` bigint UNSIGNED NOT NULL,
   `category_id` bigint UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `views` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `views` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -144,10 +144,10 @@ CREATE TABLE `posts` (
 --
 
 INSERT INTO `posts` (`id`, `title`, `excerpt`, `slug`, `content`, `thumbnail`, `user_id`, `category_id`, `created_at`, `updated_at`, `views`) VALUES
-(1, 'The Rabbit Sends.', 'Veritatis dolorem neque velit atque. Nesciunt quas porro rerum adipisci nihil cum nesciunt. Numquam pariatur aperiam necessitatibus et odio. Doloremque quas atque mollitia rerum aut rerum. Assumenda consectetur omnis est ipsam quibusdam. Et id earum quod consectetur eius rem sed. Sunt pariatur ut est sed. In fugiat molestiae est amet minima a. Aperiam atque quis voluptas dolores consequatur. Soluta eligendi placeat fugiat ex nihil in. Ut non in facilis cumque corporis cupiditate mollitia. Aut occaecati distinctio autem veritatis aut. Quos est ut nam libero corporis praesentium ab. Facilis blanditiis aut non nesciunt et. Nihil nulla voluptatem dicta velit quae porro et.', 'atque-voluptatem-ex-dolorem-magni-similique-fugit', 'Illum ullam et pariatur.', 'https://placehold.co/600x400', 4, 1, '2025-12-11 06:59:09', NULL, '2909'),
-(2, 'There was no more.', 'Qui maiores ipsum itaque beatae sit. Reprehenderit laudantium autem repellendus. Ratione aut rerum voluptate tempore et voluptas. Harum atque suscipit quo dolor accusamus eum sint. Pariatur adipisci incidunt ipsum facere eius sit officiis. Id voluptas molestiae mollitia rerum. Quaerat repellendus repellat alias voluptate molestiae natus. Officia et sit et ab eligendi. Est corporis optio non quos voluptate. Amet ex fuga non id. Ut dolor vitae aut aut totam. Ratione itaque sapiente aliquam voluptatem qui molestias veniam. Nam et magnam sed laboriosam veritatis ullam expedita autem. Quos aut amet maxime ducimus dignissimos possimus.', 'ea-est-eos-repellendus-consequatur-laborum-eos', 'Magni id dolorem aut.', 'https://placehold.co/600x400', 4, 3, '2025-12-11 06:59:09', NULL, '1755'),
+(1, 'The Rabbit Sends. 2222', '222222222222 Veritatis dolorem neque velit atque. Nesciunt quas porro rerum adipisci nihil cum nesciunt. Numquam pariatur aperiam necessitatibus et odio. Doloremque quas atque mollitia rerum aut rerum. Assumenda consectetur omnis est ipsam quibusdam. Et id earum quod consectetur eius rem sed. Sunt pariatur ut est sed. In fugiat molestiae est amet minima a. Aperiam atque quis voluptas dolores consequatur. Soluta eligendi placeat fugiat ex nihil in. Ut non in facilis cumque corporis cupiditate mollitia. Aut occaecati distinctio autem veritatis aut. Quos est ut nam libero corporis praesentium ab. Facilis blanditiis aut non nesciunt et. Nihil nulla voluptatem dicta velit quae porro et.', 'atque-voluptatem-ex-dolorem-magni-similique-fugit', '222222222222222 Illum ullam et pariatur.', 'https://placehold.co/600x400', 4, 3, '2025-12-11 06:59:09', '2025-12-14 22:14:46', '2911'),
+(2, 'There was no more.1', '1111111111    Qui maiores ipsum itaque beatae sit. Reprehenderit laudantium autem repellendus. Ratione aut rerum voluptate tempore et voluptas. Harum atque suscipit quo dolor accusamus eum sint. Pariatur adipisci incidunt ipsum facere eius sit officiis. Id voluptas molestiae mollitia rerum. Quaerat repellendus repellat alias voluptate molestiae natus. Officia et sit et ab eligendi. Est corporis optio non quos voluptate. Amet ex fuga non id. Ut dolor vitae aut aut totam. Ratione itaque sapiente aliquam voluptatem qui molestias veniam. Nam et magnam sed laboriosam veritatis ullam expedita autem. Quos aut amet maxime ducimus dignissimos possimus.', 'ea-est-eos-repellendus-consequatur-laborum-eos', 'Magni id dolorem aut.', 'https://placehold.co/600x400', 4, 4, '2025-12-11 06:59:09', '2025-12-14 22:11:14', '1755'),
 (3, 'Mock Turtle said.', 'Quia praesentium minima rerum qui necessitatibus quisquam. Sunt tempore est fugiat maiores sit fugit voluptatem. Aut excepturi cumque maiores exercitationem. Ut voluptate delectus tempora omnis odit ipsa dolor. Sint qui nulla beatae magnam qui aut. Quo architecto molestiae veniam voluptatem. Ut dignissimos laudantium et rem ut totam ut. Voluptatibus nemo non doloremque quibusdam. Qui molestiae maxime suscipit sit necessitatibus illo molestias. Eum et cumque totam ipsa quia deleniti.', 'exercitationem-tenetur-quia-ducimus-quaerat-tempore-ut', 'Autem nemo et itaque.', 'https://placehold.co/600x400', 4, 1, '2025-12-11 06:59:09', NULL, '3648'),
-(4, 'Hatter hurriedly.', 'Ea omnis repellat nobis. Omnis excepturi assumenda sunt facere voluptas. Voluptas et reiciendis recusandae illum aspernatur vel. Et tempora nesciunt corporis. Pariatur similique aut debitis voluptatem. Omnis dolorum ipsa eos nesciunt. Dolor modi ipsa itaque et vero. Voluptatem cupiditate nam alias aliquam. Enim quo magnam unde iure sit officiis. Quidem dolores quam repudiandae perferendis sint laborum voluptatem. Natus sit sint officia autem id veniam recusandae velit. Quidem facere iure minus nam vitae tempore et. Doloremque eos doloremque repudiandae ex molestiae et.', 'nulla-eum-enim-ut-autem', 'Dolor vitae omnis quo fuga.', 'https://placehold.co/600x400', 1, 3, '2025-12-11 06:59:09', NULL, '2460'),
+(4, 'Hatter hurriedly.', 'lorem is good for all, epellat nobis. Omnis excepturi assumenda sunt facere voluptas. Voluptas et reiciendis recusandae illum aspernatur vel. Et tempora nesciunt corporis. Pariatur similique aut debitis voluptatem. Omnis dolorum ipsa eos nesciunt. Dolor modi ipsa itaque et vero. Voluptatem cupiditate nam alias aliquam. Enim quo magnam unde iure sit officiis. Quidem dolores quam repudiandae perferendis sint laborum voluptatem. Natus sit sint officia autem id veniam recusandae velit. Quidem facere iure minus nam vitae tempore et. Doloremque eos doloremque repudiandae ex molestiae et.', 'nulla-eum-enim-ut-autem', 'Dolor vitae omnis quo fuga.', 'https://placehold.co/600x400', 1, 3, '2025-12-11 06:59:09', '2025-12-14 22:06:39', '2460'),
 (5, 'I never heard of.', 'Maiores error sunt autem illum dolores voluptates aspernatur. Placeat rem optio est unde. Veniam laboriosam aperiam id modi et magnam adipisci debitis. Debitis in voluptatum maiores voluptatum adipisci ad. Deserunt corrupti qui ab cum nesciunt eum earum. Consequatur esse cupiditate deleniti id culpa adipisci. Necessitatibus veritatis culpa vero repellat beatae voluptatum sit dolor. Vero et quos non sunt nihil. Nihil quas maiores aperiam cupiditate optio molestiae. Rerum esse omnis tempora autem mollitia. Dolorum a beatae doloremque praesentium nihil.', 'neque-id-blanditiis-aut-sit-nobis-fuga', 'Eum numquam quidem et porro.', 'https://placehold.co/600x400', 4, 1, '2025-12-11 06:59:09', NULL, '3767'),
 (6, 'It was opened by.', 'Quis ipsa perferendis eum qui est ut velit. Qui quia facere nemo provident quae est qui. Alias ipsum et nemo. Et optio temporibus aliquam vel magni est sunt. Enim reprehenderit cumque velit et. Commodi numquam reprehenderit hic. Et in et aut. Provident accusantium omnis assumenda quas dolorem quis molestias. Saepe dolores quas beatae sapiente voluptas. Vero necessitatibus ipsa eveniet et sit quia.', 'placeat-earum-quia-tempore-est', 'Et quia sint velit officia.', 'https://placehold.co/600x400', 1, 2, '2025-12-11 06:59:09', NULL, '177'),
 (7, 'For instance, if.', 'Officiis autem hic hic praesentium quo. Consequatur voluptate quae dolorem omnis aspernatur praesentium architecto facere. Odio labore rerum sint. Asperiores unde suscipit et at eos. Aut quod quo quasi itaque quia vel laboriosam. Sint ratione maxime iure assumenda et. Omnis deserunt excepturi provident rem officia. Odio nesciunt aliquam dolor.', 'rerum-id-molestiae-blanditiis-et-dolorum', 'Sint est adipisci sed.', 'https://placehold.co/600x400', 3, 1, '2025-12-11 06:59:09', NULL, '113'),
@@ -163,13 +163,13 @@ INSERT INTO `posts` (`id`, `title`, `excerpt`, `slug`, `content`, `thumbnail`, `
 
 CREATE TABLE `users` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `photo` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `username` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `photo` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
