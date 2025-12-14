@@ -11,7 +11,21 @@
                 <div class="col-lg-12 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
-                            <h4 class="card-title">All posts</h4>
+                            <div class="row">
+                                <div class="col">
+                                    <h2 style="font-size: 24px;" class="card-title">All posts</h2>
+                                </div>
+                                <div class="col-4">
+                                    <form class="ml-auto search-form d-none d-md-block" method="GET"
+                                        action="{{route('admin.posts')}}">
+                                        <div class="form-group">
+                                            <input type="search" class="form-control" placeholder="Search from posts..."
+                                                name="search" value="{{$keyword}}">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
 
                             <table class="table table-striped">
                                 <thead>

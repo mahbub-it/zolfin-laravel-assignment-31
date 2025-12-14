@@ -14,10 +14,16 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(5);
+        $keyword = request('search');
+
+        $posts = Post::where('title', 'like', '%' . $keyword . '%')
+            ->orWhere('excerpt', 'like', '%' . $keyword . '%')
+            ->orWhere('content', 'like', '%' . $keyword . '%')
+            ->paginate(5);
 
         return view('admin.posts', [
-            'posts' => $posts
+            'posts' => $posts,
+            'keyword' => $keyword
         ]);
     }
 
