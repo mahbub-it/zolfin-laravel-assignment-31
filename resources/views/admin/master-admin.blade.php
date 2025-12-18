@@ -180,7 +180,11 @@
                             <a class="dropdown-item">Messages<i class="dropdown-item-icon ti-comment-alt"></i></a>
                             <a class="dropdown-item">Activity<i class="dropdown-item-icon ti-location-arrow"></i></a>
                             <a class="dropdown-item">FAQ<i class="dropdown-item-icon ti-help-alt"></i></a>
-                            <a class="dropdown-item">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
+                            <form method="post" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="dropdown-item">Sign Out<i
+                                        class="dropdown-item-icon ti-power-off"></i></button>
+                            </form>
                         </div>
                     </li>
                 </ul>

@@ -52,7 +52,8 @@
                                         <tr>
                                             <td>{{ $post->id }}</td>
                                             <td class="py-1">
-                                                <img class="thumb-image" src="{{$post->thumbnail}}" alt="image" />
+                                                <img class="thumb-image" src="/storage/images/{{ $post->thumbnail }}"
+                                                    alt="image" />
                                             </td>
                                             <td> {{ $post->title }} </td>
                                             <td> {{ $post->category->name }} </td>

@@ -51,15 +51,25 @@ class PostController extends Controller
             'title' => 'required',
             'content' => 'required',
             'excerpt' => 'required',
-            'thumbnail' => 'required',
-
+            'thumbnail' => 'required | image | max:1048 | mimes:jpeg,png,jpg',
         ]);
-        $request['slug'] = implode('-', explode(' ', $request->title)) . '-' . time();
-        $request['user_id'] = auth()->user()->id;
-        $request['views'] = 0;
 
+        $post = new Post();
 
-        Post::create($request->all());
+        $post->title = $request->title;
+        $post->slug = implode('-', explode(' ', $request->title)) . '-' . time();
+        $post->excerpt = $request->excerpt;
+        $post->content = $request->input('content');
+
+        $image_name = $request->file('thumbnail')->hashName();
+        $request->file('thumbnail')->storeAs('public/images', $image_name);
+
+        $post->thumbnail = $image_name;
+        $post->user_id = auth()->user()->id;
+        $post->views = 0;
+        $post->category_id = $request->category_id;
+
+        $post->save();
 
         return redirect()->route('admin.posts')->with('message', 'Post has been published...');
     }

@@ -19,7 +19,8 @@
 
                             <h4 class="card-title">Create New Post</h4>
                             <hr>
-                            <form class="forms-sample" method="POST" action="{{ route('admin.post.store') }}">
+                            <form class="forms-sample" method="POST" action="{{ route('admin.post.store') }}"
+                                enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="form-group">
@@ -34,19 +35,14 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Post Thumbnail</label>
+                                    <br>
+                                    <input type="file" name="thumbnail">
                                     @error('thumbnail')
                                         <div class="alert alert-danger">
                                             {{ $message }}
                                         </div>
                                     @enderror
-                                    <input type="file" name="img[]" class="file-upload-default">
-                                    <div class="input-group col-xs-12">
-                                        <input type="text" name="thumbnail" class="form-control file-upload-info"
-                                            value="{{ old('thumbnail') }}" placeholder="Upload Image">
-                                        <span class="input-group-append">
-                                            <button class="file-upload-browse btn btn-info" type="button">Upload</button>
-                                        </span>
-                                    </div>
+
                                 </div>
                                 <div class="form-group">
                                     <label for="postexcerpt">Post Excerpt</label>
@@ -66,8 +62,8 @@
                                         </div>
                                     @enderror
                                     <textarea class="form-control" name="content" id="postcontent" rows="2">
-                                                                                                                            {{ old('content') }}
-                                                                                                                    </textarea>
+                                                                                                                                                                    {{ old('content') }}
+                                                                                                                                                            </textarea>
                                 </div>
 
                                 <div class="form-group">
