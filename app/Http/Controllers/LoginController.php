@@ -17,18 +17,30 @@ class LoginController extends Controller
     public function registerPost(Request $request)
     {
         $info = $request->validate([
-            'name' => 'required|unique:users|max:255',
-            'username' => 'required|unique:users',
+            'name' => 'required|max:255',
             'email' => 'required|email|unique:users',
+            'username' => 'required',
             'password' => 'required|min:8',
-            'photo' => 'required|max:255',
+            'photo' => 'required|image|mimes:jpeg,png,jpg',
         ]);
 
-        $user = User::create($info);
+        $user = new User();
 
-        if ($user) {
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->username = $request->username;
+        $user->password = bcrypt($request->password);
+
+        $photo_name = time() . '-' . $request->file('photo')->getClientOriginalName();
+        $request->file('photo')->storeAs('/public/images', $photo_name);
+
+        $user->photo = $photo_name;
+
+        if ($user->save()) {
+
             Auth::login($user);
-            return redirect('/dashboard')->with('message', 'User Created Successfully');
+
+            return redirect('/dashboard')->with('message', 'User Created Successfully...');
         }
     }
 

@@ -52,12 +52,13 @@
                                         <tr>
                                             <td>{{ $post->id }}</td>
                                             <td class="py-1">
-                                                <img class="thumb-image" src="/storage/images/{{ $post->thumbnail }}"
+                                                <img class="thumb-image"
+                                                    src="{{ route('home') }}/storage/images/{{ $post->thumbnail }}"
                                                     alt="image" />
                                             </td>
                                             <td> {{ $post->title }} </td>
-                                            <td> {{ $post->category->name }} </td>
-                                            <td> {{ $post->user->name }} </td>
+                                            <td> {{ $post->category->name ?? 'Uncategorized' }} </td>
+                                            <td> {{ $post->user->name ?? 'Unknown User' }} </td>
                                             <td> {{ $post->views }} </td>
                                             <td> {{ date('F d, Y', strtotime($post->updated_at)) }} </td>
                                             <td>

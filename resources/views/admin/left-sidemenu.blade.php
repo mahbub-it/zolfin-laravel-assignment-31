@@ -4,13 +4,14 @@
         <li class="nav-item nav-profile">
             <a href="#" class="nav-link">
                 <div class="profile-image">
-                    <img class="img-xs rounded-circle" src="{{ asset('/admin/assets/images/faces/mahbub.png') }}"
-                        alt="profile image">
+                    <img class="img-xs rounded-circle"
+                        src="{{ route('home') }}/storage/images/{{ auth()->user()->photo }}"
+                        alt="{{ auth()->user()->name }}">
                     <div class="dot-indicator bg-success"></div>
                 </div>
                 <div class="text-wrapper">
-                    <p class="profile-name">{{ Auth::user()->name }}</p>
-                    <p class="designation">Premium user</p>
+                    <p class="profile-name">{{ auth()->user()->name }}</p>
+                    <p class="designation">{{ auth()->user()->username }}</p>
                 </div>
             </a>
         </li>

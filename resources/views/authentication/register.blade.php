@@ -37,14 +37,14 @@
                         <div class="col">
 
                             <!-- @if($errors->any())
-                                                                                        <div class="alert alert-danger">
-                                                                                            <ul>
-                                                                                                @foreach ($errors->all() as $error)
-                                                                                                    <li>{{ $error }}</li>
-                                                                                                @endforeach
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                    @endif -->
+                                                                                                            <div class="alert alert-danger">
+                                                                                                                <ul>
+                                                                                                                    @foreach ($errors->all() as $error)
+                                                                                                                        <li>{{ $error }}</li>
+                                                                                                                    @endforeach
+                                                                                                                </ul>
+                                                                                                            </div>
+                                                                                                        @endif -->
 
                             @if(session()->has('message'))
                                 <div class="alert alert-success">
@@ -54,22 +54,13 @@
 
                             <h4>Create an Account</h4>
                             <hr> <br>
-                            <form method="POST" action="{{ route('registerProcess') }}">
+                            <form method="POST" action="{{ route('registerProcess') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <input value="{{ old('name') }}" type="text" name="name" class="form-control"
                                         placeholder="Full name">
                                 </div>
                                 @error('name')
-                                    <div class="mb-4 text-sm text-danger">
-                                        {{ $message }}
-                                    </div>
-                                @enderror
-                                <div class="mb-3">
-                                    <input value="{{ old('username') }}" type="text" name="username" class="form-control"
-                                        placeholder="User name">
-                                </div>
-                                @error('username')
                                     <div class="mb-4 text-sm text-danger">
                                         {{ $message }}
                                     </div>
@@ -84,6 +75,15 @@
                                     </div>
                                 @enderror
                                 <div class="mb-3">
+                                    <input value="{{ old('username') }}" type="text" name="username" class="form-control"
+                                        placeholder="User name">
+                                </div>
+                                @error('username')
+                                    <div class="mb-4 text-sm text-danger">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                                <div class="mb-3">
                                     <input value="" type="password" name="password" class="form-control"
                                         placeholder="Password">
                                 </div>
@@ -91,16 +91,19 @@
                                     <div class="mb-4 text-sm text-danger">
                                         {{ $message }}
                                     </div>
+
                                 @enderror
                                 <div class="mb-3">
-                                    <input value="{{ old('photo') }}" type="text" name="photo" class="form-control"
+                                    <input value="{{ old('photo') }}" type="file" name="photo" class="form-control"
                                         placeholder="Photo URL">
                                 </div>
+
                                 @error('photo')
                                     <div class="mb-4 text-sm text-danger">
                                         {{ $message }}
                                     </div>
                                 @enderror
+
                                 <div class="mb-5">
                                     <input type="submit" class="btn btn-primary" value="Create Account">
                                 </div>
