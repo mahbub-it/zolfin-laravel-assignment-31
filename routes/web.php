@@ -7,6 +7,7 @@ use App\Http\Controllers\BlogController;
 use App\Models\Post;
 use App\Http\Controllers\LoginController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\CategoryController;
 
 // Home Controller
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -17,13 +18,15 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 // Post Controller //
 Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
-    Route::resource('posts', PostController::class);
+    Route::resources([
+        'posts' => PostController::class,
+        'categories' => CategoryController::class
+    ]);
 
 });
 
-// Route::get('/blog', [BlogController::class, 'index'])->name("blog");
-
-// Route::get('/article/{post}', [BlogController::class, 'single'])->name('single-post');
+Route::get('/blog', [BlogController::class, 'index'])->name("blog");
+Route::get('/article/{post:slug}', [BlogController::class, 'single'])->name('single-post');
 
 // Route::get('/model-test', [BlogController::class, 'model_test']);
 
@@ -34,9 +37,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 //     dd($post->content);
 // });
 
-// Route::get('category/{category:slug}', [BlogController::class, 'categoryWisePosts']);
+Route::get('/category/{category:slug}', [BlogController::class, 'categoryWisePosts']);
 
-// Route::get('users/{user:username}', [BlogController::class, 'userBasedPost'])->name('user-post');
+Route::get('/users/{user:username}', [BlogController::class, 'userBasedPost'])->name('user-post');
 
 // Route::get('search-page', function () {
 
