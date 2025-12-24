@@ -53,12 +53,13 @@
                                             </li>
 
                                             <li class="blog-post__footer-list t-mb-15 t-mr-15">
-                                                <a href="/category/{{ $post->category->slug }}"
-                                                    class="t-link t-link--alpha sm-text blog-post__footer-link text-capitalize">
-                                                    <i class="las la-tags"></i>
-                                                    {{ $post->category->name }}
-
-                                                </a>
+                                                @if(isset($post->category))
+                                                    <a href="/category/{{ $post->category->slug }}"
+                                                        class="t-link t-link--alpha sm-text blog-post__footer-link text-capitalize">
+                                                        <i class="las la-tags"></i>
+                                                        {{ $post->category->name }}
+                                                    </a>
+                                                @endif
                                             </li>
 
                                             <li class="blog-post__footer-list t-mb-15 t-mr-15">

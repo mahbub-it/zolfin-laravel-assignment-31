@@ -103,6 +103,12 @@ class CategoryController extends Controller
 
         $category->delete();
 
+        // $category->posts()->delete();
+
+        // $category->posts()->update([
+        //     "category_id" => 23
+        // ]);
+
         return redirect()->route("categories.index")->with("message", "Category deleted successfully");
     }
 }

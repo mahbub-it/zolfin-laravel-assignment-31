@@ -91,13 +91,13 @@
 
                                                     <!-- Button trigger modal -->
                                                     <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                        data-target="#exampleModal">
+                                                        data-target="#categoryModal{{ $category->id }}">
                                                         Delete
                                                     </button>
 
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="categoryModal{{ $category->id }}" tabindex="-1"
+                                                        role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
