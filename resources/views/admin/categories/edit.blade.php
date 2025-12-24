@@ -85,10 +85,42 @@
                                             <td>
                                                 <a class="btn btn-info"
                                                     href="{{route('categories.edit', $category->id)}}">Edit</a>
-                                                <form action="{{route('categories.destroy', $category->id)}}" method="POST">
+                                                <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-danger mt-2">Delete</button>
+
+                                                    <!-- Button trigger modal -->
+                                                    <button type="button" class="btn btn-danger" data-toggle="modal"
+                                                        data-target="#exampleModal">
+                                                        Delete
+                                                    </button>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="exampleModalLabel">Remove
+                                                                        Category: {{ $category->name }}
+                                                                    </h5>
+                                                                    <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close">
+                                                                        <span aria-hidden="true">&times;</span>
+                                                                    </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    Are you sure you want to remove this category?
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-danger">Remove</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
                                                 </form>
                                             </td>
                                         </tr>
