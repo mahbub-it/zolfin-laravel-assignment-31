@@ -99,15 +99,15 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
+        $new_category = request("new_category");
+
         $category = Category::firstWhere("id", $id);
 
         $category->delete();
 
-        // $category->posts()->delete();
-
-        // $category->posts()->update([
-        //     "category_id" => 23
-        // ]);
+        $category->posts()->update([
+            "category_id" => $new_category
+        ]);
 
         return redirect()->route("categories.index")->with("message", "Category deleted successfully");
     }

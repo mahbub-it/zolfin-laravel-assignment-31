@@ -104,7 +104,18 @@
                                                                     </button>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    Are you sure you want to remove this category?
+
+                                                                    <p>Assign new category to post of this category</p>
+
+                                                                    <select class="form-control" name="new_category">
+                                                                        @foreach(App\Models\Category::where('id', '!=', $category->id)->get() as $cat)
+                                                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                                                        @endforeach
+                                                                    </select>
+                                                                    <!-- <div class="mt-2">
+                                                                                                                                <span class="text-danger">Are you sure you want to
+                                                                                                                                    delete this category?</span>
+                                                                                                                            </div> -->
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary"
