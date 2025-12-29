@@ -13,7 +13,7 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::resources([
         'posts' => PostController::class,
@@ -21,7 +21,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         'users' => UserController::class
     ]);
 
+    Route::get('/my-profile', [UserController::class, 'my_profile'])->name('user.profile');
+
 });
+
 
 Route::get('/blog', [BlogController::class, 'index'])->name("blog");
 Route::get('/article/{post:slug}', [BlogController::class, 'single'])->name('single-post');

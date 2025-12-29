@@ -16,10 +16,11 @@
                                     {{ session('success') }}
                                 </div>
                             @endif
-                            <h4 class="card-title">Edit User</h4>
+                            <h4 class="card-title">Update Profile</h4>
                             <hr>
                             <form class="forms-sample" method="POST" action="{{ route('users.update', $user->id) }}"
                                 enctype="multipart/form-data">
+
                                 @csrf
                                 @method('PUT')
                                 <div class="form-group">
@@ -27,7 +28,6 @@
                                     <input type="text" name="name" class="form-control" id="name" placeholder="Full name"
                                         value="{{ $user->name }}">
                                 </div>
-
                                 <div class="form-group">
                                     <label>User Photo</label>
                                     <br>
@@ -40,7 +40,6 @@
                                     </div>
 
                                 </div>
-
                                 <div class="form-group">
                                     <label for="email">Email address</label>
                                     <input type="text" name="email" class="form-control" id="email"
