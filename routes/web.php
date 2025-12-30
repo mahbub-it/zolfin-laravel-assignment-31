@@ -17,11 +17,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     Route::resources([
         'posts' => PostController::class,
-        'categories' => CategoryController::class,
-        'users' => UserController::class
+
     ]);
 
-    Route::get('/my-profile', [UserController::class, 'my_profile'])->name('user.profile');
+    Route::group(['middleware' => 'is_admin'], function () {
+        Route::resources([
+
+            'categories' => CategoryController::class,
+            'users' => UserController::class
+        ]);
+    });
+
+    Route::get('my-profile', [UserController::class, 'my_profile'])->name('user.profile');
 
 });
 
