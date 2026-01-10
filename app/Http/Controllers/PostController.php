@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
+use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
@@ -38,17 +39,17 @@ class PostController extends Controller
     public function create()
     {
 
-        if (auth()->user()->user_role == 'Administrator') {
+        // if (auth()->user()->user_role == 'Administrator') {
 
-            $categories = Category::all();
+        $categories = Category::all();
 
-            return view('admin.posts.create-post', [
-                'categories' => $categories,
-                'title' => 'Create New Post'
-            ]);
-        } else {
-            return 'You are not authorized to create a post...';
-        }
+        return view('admin.posts.create-post', [
+            'categories' => $categories,
+            'title' => 'Create New Post'
+        ]);
+        // } else {
+        //     return 'You are not authorized to create a post...';
+        // }
     }
 
     public function store(Request $request)
@@ -99,6 +100,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        if (Gate::denies('edit-post', $post)) {
+            abort(403);
+        }
+
         $category = Category::all();
         return view('admin.posts.edit-post', [
             'post' => $post,

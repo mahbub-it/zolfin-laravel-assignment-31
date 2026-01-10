@@ -44,7 +44,7 @@
 
                             <h4>Create an Account</h4>
                             <hr> <br>
-                            <form method="POST" action="{{ route('customer.registerProcess') }}" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('registerProcess') }}" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3">
                                     <input value="{{ old('name') }}" type="text" name="name" class="form-control"
