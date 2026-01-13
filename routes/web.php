@@ -13,6 +13,7 @@ use App\Http\Controllers\CustomerController;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Models\User;
+use App\Http\Controllers\PaymentController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -110,3 +111,7 @@ Route::get('/permission', function () {
 
     // dd($user);
 });
+
+Route::get('make-payment', [PaymentController::class, 'view']);
+
+Route::post('make-payment', [PaymentController::class, 'store'])->name('send-payment');
