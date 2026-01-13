@@ -13,13 +13,14 @@ use Illuminate\Mail\Mailables\Attachment;
 class PaymentProcessed extends Mailable
 {
     use Queueable, SerializesModels;
+    public $amount;
 
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($amount)
     {
-        //
+        $this->amount = $amount;
     }
 
     /**
@@ -28,6 +29,7 @@ class PaymentProcessed extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
+            from: 'mahbub@dreamwebdev.com',
             subject: 'Payment Processed with attachment'
         );
     }

@@ -33,9 +33,9 @@ class PaymentController extends Controller
 
         // return redirect()->back()->with('message', 'Payment Mail Sent Successfully');
 
-        $user = 'mahbub.webdev@gmail.com';
+        $user = User::find(54);
 
-        Mail::to($user)->send(new PaymentProcessed());
+        Mail::to($user)->send(new PaymentProcessed($user));
         return redirect()->back()->with('message', 'Payment Mail Sent Successfully');
     }
 }
