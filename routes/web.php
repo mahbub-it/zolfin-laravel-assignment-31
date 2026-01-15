@@ -14,6 +14,8 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\Models\User;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\AssignmentController;
+
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -115,3 +117,7 @@ Route::get('/permission', function () {
 Route::get('make-payment', [PaymentController::class, 'view']);
 
 Route::post('make-payment', [PaymentController::class, 'store'])->name('send-payment');
+
+Route::get('/assignment', [AssignmentController::class, 'single_assignment'])->name('assignment');
+
+Route::post('/assignment', [AssignmentController::class, 'assignment_score'])->name('providescore');

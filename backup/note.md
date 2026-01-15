@@ -39,3 +39,11 @@ class PaymentController extends Controller
 - php artisan vendor:publish --tag=laravel-mail
 - php artisan make:mail PaymentReceived --markdown=emails.payment-received
 -------------------------------------------------------------
+
+- php artisan make:controller AssignmentController
+- php artisan make:mail AssignmentScore
+- php artisan make:notification ScoreNotification
+
+-------------------------------------------------------------
+
+
