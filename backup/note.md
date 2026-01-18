@@ -52,5 +52,21 @@ class PaymentController extends Controller
 - php artisan vendor:publish --tag=laravel-notifications
 -------------------------------------------------------------
 
+## Class 27 Notes
+# Code
+- php artisan down
+- php artisan up
+- php artisan down --redirect=https://dreamwebdev.com
+- php artisan down --secret="0171449728201974497282-Dream-web-dev"
+- php artisan down --secret="0171449728201974497282-Dream-web-dev" --redirect="https://dreamwebdev.com"
+- link: http://google.dreamwebdev.com/0171449728201974497282-Dream-web-dev
+- php artisan down --secret="0171449728201974497282-Dream-web-dev" --redirect="https://dreamwebdev.com"
+
+----------------------------------------------------
+- link: http://google.dreamwebdev.com/0171449728201974497282-Dream-web-dev
+--------------------------------------------------------------
+
+
+
 
 

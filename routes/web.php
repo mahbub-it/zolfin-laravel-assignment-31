@@ -124,3 +124,13 @@ Route::get('/assignment', [AssignmentController::class, 'single_assignment'])->n
 Route::post('/assignment', [AssignmentController::class, 'assignment_score'])->name('providescore');
 
 Route::get('/notifications', [NotificationController::class, 'index'])->name('notifications');
+
+Route::get('/csrf-test', function () {
+    return view('csrf-test');
+});
+
+Route::post('/csrf-test', function () {
+
+    return 'Success';
+
+})->name('csrf-testing');
