@@ -63,7 +63,7 @@ class PaymentController extends Controller
 - php artisan down --secret="0171449728201974497282-Dream-web-dev" --redirect="https://dreamwebdev.com"
 
 ----------------------------------------------------
-- link: http://google.dreamwebdev.com/0171449728201974497282-Dream-web-dev
+- link: https://google.dreamwebdev.com/0171449728201974497282-Dream-web-dev
 --------------------------------------------------------------
 
 
