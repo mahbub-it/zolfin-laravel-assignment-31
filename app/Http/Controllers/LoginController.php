@@ -1,9 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
+
 use App\Models\User;
+use App\Models\Admin;
+
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Support\Facades\Hash;
+
+
 
 class LoginController extends Controller
 {
@@ -39,6 +48,8 @@ class LoginController extends Controller
 
 
         if ($user->save()) {
+
+            event(new Registered($user));
 
             Auth::attempt(['email' => $request->email, 'password' => $request->password]);
 
@@ -86,6 +97,19 @@ class LoginController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/login')->with('message', 'Logout Successfully');
+    }
+
+    //Email Verify
+    public function emailNotice()
+    {
+        return 'You must verify your email first 24:28';
+    }
+
+    public function emailVerify(EmailVerificationRequest $request)
+    {
+        $request->fulfill();
+
+        return redirect('/dashboard')->with('message', 'Email Verified Successfully');
     }
 
 }

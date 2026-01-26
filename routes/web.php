@@ -38,7 +38,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     ]);
 });
 
-Route::get('my-profile', [UserController::class, 'my_profile'])->name('user.profile');
+Route::get('my-profile', [UserController::class, 'my_profile'])->name('users.profile');
 
 
 
@@ -204,3 +204,7 @@ Route::get('/testcollect', function () {
     $collection = collect([1, 2, 3, 4, 5]);
     return $collection->sum();
 });
+
+Route::get('/email/notice', [LoginController::class, 'emailNotice'])->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', [LoginController::class, 'emailVerify'])->middleware(['auth', 'signed'])->name('verification.verify');
