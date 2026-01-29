@@ -20,7 +20,7 @@ use App\Http\Controllers\ContactController;
 use Illuminate\Support\Number;
 use Illuminate\Support\Facades\Collect;
 use Illuminate\Support\Facades\Map;
-
+use Illuminate\Support\Facades\Crypt;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -208,3 +208,20 @@ Route::get('/email/notice', [LoginController::class, 'emailNotice'])->middleware
 Route::get('/email/verify/{id}/{hash}', [LoginController::class, 'emailVerify'])->middleware(['auth', 'signed'])->name('verification.verify');
 
 Route::post('/email/resend-verification', [LoginController::class, 'emailVerifyPost'])->middleware('auth')->name('verification.send');
+
+Route::get('/encrypt-value', function () {
+
+    $password = '123456';
+
+    $encrypted = Crypt::encryptString($password);
+
+    return $encrypted;
+});
+
+Route::get('/decrypt-value', function () {
+
+    $encrypted = 'eyJpdiI6IlJrOEJaWTU3UEk2aGZoUDV4bjVWd3c9PSIsInZhbHVlIjoid1NRT0VVcThsZXVBcWpkTTNlSHRudz09IiwibWFjIjoiZDJmZjJhZDgzZjNlNDZiZDdiY2IxNmQ1Mjc2YWJkM2Y2NmZhYjVlMjVjNzk2NGQzMWVmM2I4YjhhODc4NGJjZiIsInRhZyI6IiJ9';
+
+    return Crypt::decryptString($encrypted);
+});
+
